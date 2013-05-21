@@ -70,11 +70,13 @@ Vagrant::Config.run do |config|
   #   chef.data_bags_path = "../my-recipes/data_bags"
 	chef.add_recipe "apt"
 	chef.add_recipe "openssl"
-	chef.add_recipe "mysql"
+	chef.add_recipe "database"
+    chef.add_recipe "mysql"
 	chef.add_recipe "mysql::client"
 	chef.add_recipe "mysql::server"
-	chef.add_recipe "database"
-	chef.add_recipe "php"
+	chef.add_recipe "mysql::ruby"
+    chef.add_recipe "build-essential"
+    chef.add_recipe "php"
 	chef.add_recipe "php::module_apc"
 	chef.add_recipe "php::module_curl"
 	chef.add_recipe "php::module_mysql"
@@ -82,6 +84,8 @@ Vagrant::Config.run do |config|
 	chef.add_recipe "apache2::mod_php5"
 	chef.add_recipe "apache2::mod_rewrite"
 	chef.add_recipe "wordpress.test::webserver"
+	chef.add_recipe "wordpress.test::database"
+	chef.add_recipe "wordpress.test::wordpress"
 	chef.json={
 		:mysql => {
 			:server_root_password => 'root',
